@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "298451654779",
+    "project_id": "cycling-world-blog-app",
+    "storage_bucket": "cycling-world-blog-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:298451654779:android:7bd2450d9b23a77ee46ade",
+        "android_client_info": {
+          "package_name": "com.johnanthonybataller.cycling_world_blogs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "298451654779-n04ao1er85hdd8ogvcrkdklo1cc82537.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJ3QwZFsh-PQPgxpbDu7PtWLY2uQy0Azg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "298451654779-n04ao1er85hdd8ogvcrkdklo1cc82537.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
