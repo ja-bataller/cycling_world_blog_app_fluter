@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'authentication.dart';
+import 'package:get/get.dart';
 
 class LoginSignup extends StatefulWidget {
   @override
@@ -379,7 +380,12 @@ class _LoginSignupState extends State<LoginSignup> {
             width: 250.0,
             child: ElevatedButton(
               onPressed: () {
-               validateAndSubmit();
+                if (passwordController.text == confirmPasswordController.text) {
+                  validateAndSubmit();
+                } else {
+                  Get.snackbar('Error', 'Confirm password doesn\'t match.');
+                }
+
               },
               style: ButtonStyle(
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0),)),

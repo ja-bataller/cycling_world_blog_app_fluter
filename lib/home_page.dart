@@ -339,10 +339,10 @@ class BlogsTile extends StatelessWidget {
 
   void deleteErrorDialog(BuildContext context) {
     var alertDialog = AlertDialog(
-      title: Text("Oops"),
+      title: Text("Oops!"),
       content: SingleChildScrollView(
         child: ListBody(
-          children: [Text("Post not deleted. You are not the Author of this post.")],
+          children: [Text("Post not deleted. You're not the Author of this post.")],
         ),
       ),
       actions: [
