@@ -1,6 +1,5 @@
 import 'package:cycling_world_blog_app/firebase_query.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:intl/intl.dart';
@@ -8,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'home_page.dart';
 import 'firebase_query.dart';
+import 'package:get/get.dart';
 
 class Upload extends StatefulWidget {
   @override
@@ -102,6 +102,7 @@ class _UploadState extends State<Upload> {
       "description": _myValue,
       "date": date,
       "time": time,
+      'createdOn':FieldValue.serverTimestamp(),
     };
 
     crudMethods.addData(data);
@@ -122,6 +123,8 @@ class _UploadState extends State<Upload> {
     if (validateAndSave()) {
       final Reference uploadImageReference = FirebaseStorage.instance.ref().child("Post images");
 
+      Navigator.pop(context);
+
       var timeKey = DateTime.now();
 
       final UploadTask uploadTask = uploadImageReference.child(timeKey.toString() + ".jpg").putFile(sampleImage);
@@ -130,34 +133,36 @@ class _UploadState extends State<Upload> {
 
       url = imageURL.toString();
       print("Image URL $url");
-
-      Navigator.pop(context);
       saveToDatabase(url);
+      Get.snackbar('Uploaded', 'Your photo has been posted.');
     }
+
   }
 
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Colors.grey[900], //change your color here
-        ),
-        title: Text("Upload Photo", style: TextStyle(color: Colors.grey[900])),
-        centerTitle: true,
-        backgroundColor: Color(0xfff1ca89),
-      ),
-      floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            getImage();
-          },
-          tooltip: "Add Photo",
-          child: Icon(Icons.add_a_photo_outlined),
-          backgroundColor: Color(0xfff1ca89),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Colors.grey[900], //change your color here
           ),
-      body: Center(
-        child: sampleImage == null ? Text("Select an Image") : enableUpload(),
+          title: Text("Upload Photo", style: TextStyle(color: Colors.grey[900])),
+          centerTitle: true,
+          backgroundColor: Color(0xfff1ca89),
+        ),
+        floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              getImage();
+            },
+            tooltip: "Add Photo",
+            child: Icon(Icons.add_a_photo_outlined),
+            backgroundColor: Color(0xfff1ca89),
+            ),
+        body: Center(
+          child: sampleImage == null ? Text("Select an Image") : enableUpload(),
+        ),
       ),
     );
   }

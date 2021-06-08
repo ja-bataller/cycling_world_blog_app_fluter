@@ -4,7 +4,6 @@ import 'upload_page.dart';
 import 'firebase_query.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:get/get.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:path/path.dart' as Path;
@@ -83,37 +82,39 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: Icon(
-          Icons.directions_bike_rounded,
-          color: Colors.grey[900],
-        ),
-        title: Text("Cycling World", style: TextStyle(color: Colors.grey[900])),
-        backgroundColor: Color(0xfff1ca89),
-        actions: [
-          IconButton(
-            tooltip: "logout button",
-            icon: Icon(Icons.exit_to_app),
-            onPressed: () {
-              // _logoutUser();
-              loggingOutDialog(context);
-            },
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          leading: Icon(
+            Icons.directions_bike_rounded,
             color: Colors.grey[900],
-          )
-        ],
+          ),
+          title: Text("Cycling World", style: TextStyle(color: Colors.grey[900])),
+          backgroundColor: Color(0xfff1ca89),
+          actions: [
+            IconButton(
+              tooltip: "logout button",
+              icon: Icon(Icons.exit_to_app),
+              onPressed: () {
+                // _logoutUser();
+                loggingOutDialog(context);
+              },
+              color: Colors.grey[900],
+            )
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          tooltip: "upload photo",
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return Upload();
+            }));
+          },
+          child: const Icon(Icons.add),
+          backgroundColor: Color(0xfff1ca89),
+        ),
+        body: blogsList(),
       ),
-      floatingActionButton: FloatingActionButton(
-        tooltip: "upload photo",
-        onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return Upload();
-          }));
-        },
-        child: const Icon(Icons.add),
-        backgroundColor: Color(0xfff1ca89),
-      ),
-      body: blogsList(),
     );
   }
 
@@ -163,7 +164,6 @@ class _HomeState extends State<Home> {
           return alertDialog;
         });
   }
-
 }
 
 class BlogsTile extends StatelessWidget {
@@ -180,6 +180,7 @@ class BlogsTile extends StatelessWidget {
       @required this.description,
       @required this.date,
       @required this.time});
+
 
   @override
   Widget build(BuildContext context) {

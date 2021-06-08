@@ -93,14 +93,14 @@ class _LoginSignupState extends State<LoginSignup> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // appBar: AppBar(
-      //   title: Text("Cycling World", style: TextStyle(color: Colors.grey[800])),
-      //   centerTitle: true,
-      //   backgroundColor: Color(0xfff2dac3),
-      // ),
-      body: SafeArea(
-        child: Form(
+    return SafeArea(
+      child: Scaffold(
+        // appBar: AppBar(
+        //   title: Text("Cycling World", style: TextStyle(color: Colors.grey[800])),
+        //   centerTitle: true,
+        //   backgroundColor: Color(0xfff2dac3),
+        // ),
+        body: Form(
           key: _formKey,
           child: Center(
             child: ListView(
@@ -112,72 +112,6 @@ class _LoginSignupState extends State<LoginSignup> {
       ),
     );
   }
-
-  // List<Widget> createInput() {
-  //   return [
-  //       Center(
-  //         child: ListView(
-  //           shrinkWrap: true,
-  //           children: [
-  //             Center(
-  //                 child: Column(
-  //                   children: [
-  //                     getImageAsset(),
-  //                     SizedBox(
-  //                       height: 10.0,
-  //                     ),
-  //                     Text(
-  //                         "Cycling World Blogs",
-  //                       style: TextStyle(
-  //                         fontSize: 30.0
-  //                       ),
-  //                     ),
-  //                     SizedBox(
-  //                       height: 10.0,
-  //                     )
-  //                   ],
-  //                 )
-  //             ),
-  //             Padding(
-  //               padding: const EdgeInsets.all(20.0),
-  //               child: TextFormField(
-  //                 controller: emailController,
-  //                 validator: (value) => value.isEmpty ? "Please enter email.": null,
-  //                 onSaved: (value) => _email = value,
-  //                 decoration: InputDecoration(
-  //                   labelText: "Email",
-  //                   border: OutlineInputBorder(
-  //                       borderRadius: BorderRadius.circular(5.0)),
-  //                   focusedBorder: OutlineInputBorder(
-  //                     borderSide: const BorderSide(color: Colors.brown),
-  //                     borderRadius: BorderRadius.circular(5.0),
-  //                   ),
-  //                 ),
-  //               ),
-  //             ),
-  //             Padding(
-  //               padding: const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
-  //               child: TextFormField(
-  //                 controller: passwordController,
-  //                 validator: (value) => value.isEmpty ? "Please enter password.": null,
-  //                 onSaved: (value) => _password = value,
-  //                 obscureText: true,
-  //                 decoration: InputDecoration(
-  //                   labelText: "Password",
-  //                   border: OutlineInputBorder(
-  //                       borderRadius: BorderRadius.circular(5.0)),
-  //                   focusedBorder: OutlineInputBorder(
-  //                     borderSide: const BorderSide(color: Colors.brown),
-  //                     borderRadius: BorderRadius.circular(5.0),
-  //                   ),
-  //                 ),
-  //               ),
-  //             ),
-  //           ],
-  //         ),
-  //       ),
-  //   ];
-  // }
 
   List<Widget> createForm() {
     if (_formType == FormType.login) {

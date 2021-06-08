@@ -14,10 +14,10 @@ class CrudMethods {
     });
   }
 
-  getData() async {
+  Future getData() async {
     return await FirebaseFirestore.instance
         .collection("blogs")
-        .orderBy("time", descending: true)
+        .orderBy("createdOn", descending: true)
         .snapshots();
   }
 
